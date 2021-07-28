@@ -1,0 +1,8 @@
+Host bastion-t5kvb.t5kvb.dynamic.opentlc.com
+	user cloud-user
+	IdentityFile /home/jwarnica/Projects/SAP/playbookProjets/sap-tower-projects/inventory/sample_rhpds/ssh.key
+
+Host *.example.com
+	user cloud-user
+	IdentityFile /home/jwarnica/Projects/SAP/playbookProjets/sap-tower-projects/inventory/sample_rhpds/ssh.key
+	ProxyJump bastion-t5kvb.t5kvb.dynamic.opentlc.com

@@ -1,0 +1,11 @@
+[ssh_connection]
+# ssh_args:  '-i inventory/sample_rhpds/ssh.key -o "ProxyCommand ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i inventory/sample_rhpds/ssh.key -W %h:%p cloud-user@bastion-t5kvb.t5kvb.dynamic.opentlc.com"'
+ssh_args:  '-F ssh_config -o StrictHostKeyChecking=no'
+
+[defaults]
+nocows = True
+pipelining = True
+
+# proxycommand, no pipelining: 39
+# proxycommand, pipelining: 53
+
