@@ -1,2 +1,4 @@
 ansible.cfg
 ssh_config
+inventory/sample_rhpds/ssh.key
+roles/**

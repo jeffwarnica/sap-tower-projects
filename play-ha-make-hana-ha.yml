@@ -1,0 +1,15 @@
+---
+- name:  Playbook to add HA with pacemaker to a HANA deployment
+  hosts: hanas
+  become: true
+
+  tasks:
+    - name: Apply HA Related roles to HANA cluster
+      include_role: 
+        name: "{{ role_item }}"
+      loop:
+        - redhat_sap.sap_hana_hsr
+        - redhat_sap.sap-hana-ha-pacemaker
+      loop_control:
+        loop_var: role_item
+

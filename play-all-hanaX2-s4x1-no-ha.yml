@@ -1,0 +1,51 @@
+---
+- name:  Playbook to configure a SAP HANA and S4/Hana deployment
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Apply generic preparatory roles to all host
+      include_role: 
+        name: "{{ role_item }}"
+      loop:
+        - redhat_sap.sap_rhsm
+        - linux-system-roles.storage
+        - redhat_sap.sap_hostagent
+        - redhat_sap.sap-preconfigure
+      loop_control:
+        loop_var: role_item
+
+
+- name: Playbook to configure SAP HANA on suitable nodes
+  hosts: hanas
+  # gather_facts: false #already done
+  become: true
+
+  tasks:
+    - name: Apply HANA deployment roles
+      include_role:
+        name: "{{ role_item }}"
+      loop:
+        - redhat_sap.sap-hana-preconfigure
+        - redhat_sap.sap_hana_deployment
+      loop_control:
+        loop_var: role_item
+
+        # - redhat_sap.sap_hana_hsr #IS HA related
+        # - redhat_sap.sap-hana-ha-pacemaker
+        
+- name: Playbook to configure SAP Netweaver (S4/HANA) on suitable nodes
+  hosts: s4hanas
+  # gather_facts: false #already done
+  become: true
+
+  tasks:
+    - name: Apply S4/HANA deployment roles
+      include_role:
+        name: "{{ role_item }}"
+      loop:
+        - redhat_sap.sap-netweaver-preconfigure
+        - redhat_sap.sap-s4hana-deployment
+        #- netweaver HA
+      loop_control:
+        loop_var: role_item

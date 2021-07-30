@@ -2,9 +2,11 @@ sample_sap:
   vars:
     ansible_user: cloud-user
   children:
-    hana:
+    hanas:
       hosts:
-        hana-t5kvb1.example.com:
+        #Yes, yes, should be using group_vars
+        # tower project did not, and am changing as little as possible, first pass
+        hana-48jll1.example.com: # SAMPLE: CHANGE ME
             storage_pools:
                 - name: sap
                   disks:
@@ -44,12 +46,12 @@ sample_sap:
             sap_hana_hsr_hana_sid: "RHE"
             sap_hana_hsr_hana_instance_number: "00"
             sap_hana_hsr_hana_db_system_password: "R3dh4t123!"
-            sap_hana_hsr_hana_primary_hostname: "hana-t5kvb1"
-            sap_hana_hsr_full_primary_hostname: "hana-t5kvb1"
-            sap_hana_hsr_full_secondary_hostname: "hana-t5kvb2"
+            sap_hana_hsr_hana_primary_hostname: "hana-48jll1" # SAMPLE: CHANGE ME
+            sap_hana_hsr_full_primary_hostname: "hana-48jll1" # SAMPLE: CHANGE ME
+            sap_hana_hsr_full_secondary_hostname: "hana-48jll2" # SAMPLE: CHANGE ME
             sap_hana_hsr_role: "primary"
             sap_hana_hsr_alias: "DC1"
-        hana-t5kvb2.example.com:
+        hana-48jll2.example.com: # SAMPLE: CHANGE ME
             storage_pools:
             - name: sap
               disks:
@@ -89,14 +91,14 @@ sample_sap:
             sap_hana_hsr_hana_sid: "RHE"
             sap_hana_hsr_hana_instance_number: "00"
             sap_hana_hsr_hana_db_system_password: "R3dh4t123!"
-            sap_hana_hsr_hana_primary_hostname: "hana-t5kvb1"
-            sap_hana_hsr_full_primary_hostname: "hana-t5kvb1"
-            sap_hana_hsr_full_secondary_hostname: "hana-t5kvb2"
+            sap_hana_hsr_hana_primary_hostname: "hana-48jll1" # SAMPLE: CHANGE ME
+            sap_hana_hsr_full_primary_hostname: "hana-48jll1" # SAMPLE: CHANGE ME
+            sap_hana_hsr_full_secondary_hostname: "hana-48jll2" # SAMPLE: CHANGE ME 
             sap_hana_hsr_role: "secondary"
             sap_hana_hsr_alias: "DC2"
-    app:
+    s4hanas:
       hosts:
-        s4hana-t5kvb.example.com:
+        s4hana-48jll.example.com: # SAMPLE: CHANGE ME
             storage_pools:
             - name: sap
               disks:
@@ -124,7 +126,7 @@ sample_sap:
             sap_s4hana_deployment_master_password: "R3dh4t123!"
             sap_s4hana_deployment_hana_systemdb_password: "R3dh4t123!"
             sap_s4hana_deployment_sid: "RHE"
-            sap_s4hana_deployment_db_host: "hana-t5kvb1"
+            sap_s4hana_deployment_db_host: "hana-48jll1"  # SAMPLE: CHANGE ME (ALSO TODO: USE VIP)
             sap_s4hana_deployment_db_sid: "RHE"
             sap_s4hana_deployment_hana_instance_nr: "00"
             sap_s4hana_deployment_hana_system_password: "R3dh4t123!"

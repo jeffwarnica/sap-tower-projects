@@ -1,19 +1,39 @@
-- src: redhat_sap.sap_hana_deployment
-- src: redhat_sap.sap_hana_ha_pacemaker
-  version: v1.0.0
-- src: https://github.com/redhat-sap/sap-hana-hsr.git
-  version: 'tower'
-- src: redhat_sap.sap_hana_hsr
-  version: v1.2.0
-- src: https://github.com/linux-system-roles/sap-hana-preconfigure.git
-  version: v1.0
-- src: redhat_sap.sap_hostagent
-  version: v1.2.0
-- src: https://github.com/linux-system-roles/sap-netweaver-preconfigure.git
-  version: v1.0
-- src: https://github.com/linux-system-roles/sap-preconfigure.git
-  version: v1.0
-- src: redhat_sap.sap_rhsm
+- name: redhat_sap.sap_rhsm
+  src: redhat_sap.sap_rhsm
   version: v1.1.2
-- src: redhat_sap.sap_s4hana_deployment
-- src: https://github.com/linux-system-roles/storage
+
+- name: linux-system-roles.storage
+  src: https://github.com/linux-system-roles/storage
+
+
+- name: redhat_sap.sap_hostagent
+  src: redhat_sap.sap_hostagent
+  version: v1.2.0
+
+- name: redhat_sap.sap-preconfigure
+  src: https://github.com/linux-system-roles/sap-preconfigure.git
+  version: v1.0
+
+- name: redhat_sap.sap-hana-preconfigure
+  src: https://github.com/linux-system-roles/sap-hana-preconfigure.git
+  version: v1.0
+
+- name: redhat_sap.sap-netweaver-preconfigure
+  src: https://github.com/linux-system-roles/sap-netweaver-preconfigure.git
+  version: v1.0
+
+- name: redhat_sap.sap-s4hana-deployment
+  src: redhat_sap.sap_s4hana_deployment
+
+- src: redhat_sap.sap_hana_deployment 
+  name: redhat_sap.sap_hana_deployment
+
+
+- name: redhat_sap.sap_hana_hsr
+  src: redhat_sap.sap_hana_hsr
+  version: 'tower'
+
+
+- name: redhat_sap.sap-hana-ha-pacemaker
+  src: redhat_sap.sap_hana_ha_pacemaker
+  version: v1.0.0

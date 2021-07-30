@@ -21,3 +21,7 @@ several of the steps one might model in Tower. The requirements to configure a l
 * Fix inventory
   * Copy inventory/sample_rhpds (or just edit)
   * Mostly fix the guid
+  * Put the provided ssh key in inventory/<inventory>/ssh.key
+* Fetch roles
+  * `ansible-galaxy role install -r roles/requirements.yml -p roles/.`
+  * (but more likely `ln -s` to the local roles you are hacking on)
